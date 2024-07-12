@@ -60,3 +60,33 @@ ax[1].set_title('Mean Filtered Image')
 plt.show()
 ```
 Kodingan diatas melakukan filter rata-rata pada gambar grayscale dengan menghitung rata-rata dari nilai piksel di sekitar setiap piksel dalam gambar. Proses ini dilakukan melalui dua loop for yang mengiterasi setiap piksel dalam gambar, menjumlahkan nilai dari piksel tersebut dan delapan tetangganya, dan menghitung rata-rata nilai-nilai tersebut untuk menghasilkan gambar yang telah difilter. Setelah pemrosesan selesai, gambar asli dan gambar hasil filter ditampilkan berdampingan menggunakan Matplotlib, memungkinkan perbandingan visual yang jelas untuk melihat efek dari filter rata-rata dalam menghaluskan gambar.
+
+
+Teori Pendukung tentang Filtering Citra
+1. Filter Rata-Rata (Mean Filtering)
+Filter rata-rata adalah salah satu teknik filtering sederhana yang digunakan dalam pengolahan citra untuk menghaluskan gambar atau mengurangi noise. Tujuan utamanya adalah mengurangi fluktuasi kecil dalam intensitas piksel yang disebabkan oleh noise acak atau detail yang tidak diinginkan.
+Proses:
+Untuk setiap piksel dalam citra, nilai piksel tersebut diganti dengan nilai rata-rata intensitas piksel di sekitarnya.
+Sebuah kernel (biasanya berbentuk kotak atau lingkaran dengan ukuran tertentu) digunakan untuk menghitung rata-rata intensitas piksel di sekitar piksel yang sedang diproses.
+Misalnya, kernel 3x3 berarti setiap piksel akan diubah menjadi rata-rata intensitas dari 9 piksel (termasuk dirinya sendiri).
+Kelebihan:
+Sederhana dan mudah diimplementasikan.
+Efektif dalam menghilangkan noise yang bersifat acak atau bernilai rendah.
+Kekurangan:
+Tidak efektif dalam menjaga detail tajam atau struktur yang halus dalam citra.
+Rentan terhadap noise yang lebih kompleks seperti noise salt-and-pepper.
+2. Implementasi dalam Python menggunakan Numpy dan OpenCV
+Langkah Implementasi:
+Membaca Citra: Citra dimuat menggunakan OpenCV (cv2.imread) dan konversi warna dilakukan ke RGB (cv2.cvtColor), karena matplotlib menggunakan format RGB untuk tampilan yang benar.
+Filter Median: Sebelumnya, Anda menggunakan filter median untuk mengurangi noise. Filter ini efektif dalam menghilangkan noise salt-and-pepper yang lebih kasar dibandingkan dengan filter rata-rata.
+Filter Rata-Rata: Dilakukan dengan nested loop pada citra grayscale. Setiap piksel diganti dengan nilai rata-rata dari piksel-piksel di sekitarnya, menggunakan kernel 3x3.
+Visualisasi Hasil:
+Hasil dari proses filtering (baik filter median maupun filter rata-rata) ditampilkan menggunakan matplotlib untuk membandingkan citra asli dengan citra yang telah difilter.
+Aplikasi Filtering Citra
+Filtering citra adalah teknik yang penting dalam berbagai aplikasi seperti:
+Pengolahan Medis: Mengurangi noise dalam citra pencitraan medis seperti MRI atau CT scan untuk meningkatkan ketepatan diagnosis.
+Pengenalan Pola: Memperbaiki kualitas citra untuk memudahkan analisis fitur dan pengenalan objek.
+Visi Komputer: Meningkatkan kualitas citra sebelum memprosesnya untuk mendeteksi objek atau fitur tertentu.
+Memilih jenis filter yang tepat sangat tergantung pada sifat dan tujuan dari citra yang sedang diproses. Filter rata-rata, meskipun sederhana, tetap menjadi salah satu pilihan yang penting dalam toolbox pengolahan citra karena kemudahannya dalam implementasi dan efektivitasnya dalam mengurangi noise yang ringan.
+berikut link terkait :OpenCV Filtering Documentation
+                      OpenCV Python Tutorial - Image Filtering
